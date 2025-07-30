@@ -1,0 +1,34 @@
+{% extends "base.html"%}
+<!--Cargar carpeta de archivos estaticos -->
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="col-12 col-md-6 offset-md-3 card mt-5">
+                <div class="card-header text-center bg-dark">
+                    <h1 class="text-primary">Login</h1>
+                </div>
+            <div class="card-body">
+                    
+                <form method="post">
+                    <!--Este token es necesario-->
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" name="username" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="text" name="password" class="form-control">
+                    </div>
+                    <div class="btn-group mt-3">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

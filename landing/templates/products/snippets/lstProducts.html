@@ -1,0 +1,7 @@
+<!--productos-->
+{% for product in product_list %}
+    <div class="col-3 mt-4">
+        <!--Cargar cartas de productos-->
+        {% include 'products/snippets/product.html'%}
+    </div>
+{% endfor%}

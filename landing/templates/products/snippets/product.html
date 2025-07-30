@@ -1,0 +1,19 @@
+<div class="card h-100">
+    <!--Verificar que existe la imagen-->
+    <div class="card-body text-center">
+        <h5 class="card-title">{{ product.title }}</h5>
+        {% if product.image %}
+        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+        {% endif %}
+        <p class="card-text">{{ product.description }}</p>
+        <p class="card-text text-danger">{{ product.price }}</p>
+        <!-- Recordando que todos los productos se inician con product/slug-->
+        {% if product.slug%}
+        <!-- Enlace a la página del producto -->
+        <a href="{% url 'product' product.slug %}" class="btn btn-primary">Más información</a>
+        {% else %}
+        <!-- Si no hay slug, mostrar un mensaje o enlace alternativo -->
+        <a href="#" class="btn btn-primary">Más información</a>
+        {% endif %}
+    </div>
+</div>

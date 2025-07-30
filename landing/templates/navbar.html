@@ -1,0 +1,74 @@
+<!-- direcciones -->
+{% url 'login' as login%}
+{% url 'logout' as logout%}
+{% url 'registro' as registro%}
+{% url 'index' as index %}
+{% url 'carts' as cart %}
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    
+    <a class="navbar-brand {%if request.path == index%} active {% endif%}" href="{% url 'index' %}">
+      <span><i class="fa-solid fa-store"></i></span>
+      Tienda</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    {% if user.is_authenticated%}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {%if request.path == index%} active {% endif%}" aria-current="page" href="{{ index }}">
+            <span><i class="fa-solid fa-house"></i></span>
+            Inicio</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+          <i class="fa-solid fa-users"></i>
+          </a>
+            <li class="nav-item">
+              <a class="nav-link" href="{{cart}}"><i class="fa-solid fa-cart-shopping"></i></a>
+            </li>
+          <ul class="dropdown-menu">
+            <!-- Verificar si el usuario está autenticado -->
+            
+            <li><a class="dropdown-item" href="{{ logout}}">
+              <a><i class="fa-solid fa-right-from-bracket"></i></a>
+              Cerrar Sesión</a>
+            </li>
+
+            {% else %}
+            <li><a class="dropdown-item {%if request.path == login%} active {% endif%}" href="{{ login }}">
+              <span><i class="fa-solid fa-right-to-bracket"></i></span>
+              Iniciar Sesión
+            </a>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item {%if request.path == registro%} active {% endif%}" href="{{ registro}}">
+            <span><i class="fa-solid fa-user-plus"></i></span>
+            Registrarse</a></li>
+          </ul>
+        </li>
+        <!-- Carrito de compras -->
+ 
+        {% endif %}
+      </ul>
+      </ul>
+    </div>
+  </div>
+</nav>

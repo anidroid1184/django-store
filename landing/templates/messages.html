@@ -1,0 +1,14 @@
+<!--Plantilla donde se cargan los mensajes-->
+{% if messages %}
+    {% for msg in messages%}
+        {% if msg.tags == 'success'%}
+            <div class="alert alert-success" role="alert">
+                {{ msg }}
+            </div>
+        {% else%}
+            <div class="alert alert-danger" role="alert">
+                {{ msg }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}

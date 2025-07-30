@@ -1,0 +1,24 @@
+<!-- Heredar del documento base.html las configuraciones -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">
+    <!-- Encabezado -->
+    <div class="col-12 text-center mt-5">
+        <h1 class="text-primary">Sebastian Store</h1>
+        {% include 'products/snippets/search.html' %}
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="col">
+        <div class="row justify-content-center mt-4">
+        <!--productos-->
+        {% include 'products/snippets/lstProducts.html' %}
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
