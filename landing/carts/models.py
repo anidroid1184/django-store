@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import User
 from products.models import Product
+from django.db.models.signals import pre_saves
 
 
 # Create your models here.
@@ -13,6 +14,12 @@ class Cart(models.Model):
     # blank quiere decir que no es obligatorio
     # osea que podemos tener visitantes y usuarios que tengan
     # carritos
+    cart_id = models.CharField(
+        max_length=100,
+        null=False,
+        blank=False,
+        unique=True
+        )
     user = models.ForeignKey(
         User,
         null=True,
@@ -25,4 +32,5 @@ class Cart(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return []
+        # retornamos el id del carrito
+        return self.cart_id
