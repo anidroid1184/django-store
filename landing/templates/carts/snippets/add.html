@@ -1,0 +1,7 @@
+<!--Form para agregar productos-->
+<form action="" method="post">
+    <!--Por seguridad los forms van con token-->
+    {% csrf_token %}
+    <input type="hidden" name="product_id{{ product_id }}">
+    <button type="submit" class="btn btn-warning">Agregar al carrito</button>
+</form>
